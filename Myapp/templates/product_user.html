@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER Dashboard</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1 align="center">USER dashboard</h1>
+        
+    {% if Products|length == 0 %}
+        <h1 align="center">NO products available</h1>
+    {% else %}
+        <div class="container">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Product Name</th>
+                        <th>Product Quality</th>
+                        <th>Product Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in Products %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.quality }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ forloop.counter }}">
+                                Buy
+                            </button>
+
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal{{ forloop.counter }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Purchase</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <!-- Modal Body -->
+                                        <div class="modal-body">
+                                            <form method="post" action="{% url 'buy' product.id %}">
+                                                {% csrf_token %}
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>Product Name</td>
+                                                        <td>:</td>
+                                                        <td>{{ product.name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Product Quality</td>
+                                                        <td>:</td>
+                                                        <td>{{ product.quality }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Product Quantity </td>
+                                                        <td>:</td>
+                                                        <td>{{ product.quantity }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Quantity to Buy</td>
+                                                        <td>:</td>
+                                                        <td><input type="number" name="buy_quantity" class="form-control" min="1" max="{{ product.quantity }}" required></td>
+                                                    </tr>
+                                                </table>
+
+                                                <!-- Modal Footer -->
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Buy</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</body>
+</html>

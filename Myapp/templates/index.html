@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Increment/Decrement Example</title>
+</head>
+<body>
+    <h1>Current Value: {{ current_value }}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" name="increment">Increment</button>
+        <button type="submit" name="decrement">Decrement</button>
+    </form>
+</body>
+</html>

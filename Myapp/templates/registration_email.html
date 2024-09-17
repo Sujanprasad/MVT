@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rigistration</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <form action="" method="post">
+        <h1>Rigister</h1>
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" class="btn-primary">
+    </form>
+    <p>go to <a href="/login_email">login page</a></p>
+</body>
+
+</html>

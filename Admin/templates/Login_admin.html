@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="container">
+    <form method="post">
+        <h1 align="center">Login</h1>
+        <br>
+        {%csrf_token%}
+        <div align="center">
+        {{form.as_p}}
+        <br>
+        <button type="submit" class="btn btn-primary">submit</button>
+    </div>
+    </form>
+</div>
+<br>
+
+</body>
+</html>

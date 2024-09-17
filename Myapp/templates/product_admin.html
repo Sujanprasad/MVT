@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN dashboard</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1 align="center">ADMIN dashboard</h1>
+   <div align="center">
+        <form  method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            {%if Button%}
+                <button onclick="alert('data updated successfully!');" class="btn btn-primary">update</button>
+            {%else%}
+                <button  onclick="alert('Form submitted successfully!');" class="btn btn-primary">submit</button>
+            {%endif%}
+        </form>
+   </div> 
+    <br/>
+    {% if Products|length == 0 %}
+        <h1 align="center">NO products available</h1>
+    {% else %}
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <th>s.no</th>
+                <th>Product name</th>
+                <th>Product quality</th>
+                <th>Product quantity</th>
+                <th>Actions</th>
+            </thead>
+            {% for product in Products %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.quality}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>
+                            <a href="/product_admin/edit_product/{{ product.id }}"><button type="button" class="btn btn-primary">edit</button></a>
+                            <a href="delete_product/{{ product.id }}"><button type="button" class="btn btn-danger">delete</button></a>
+                        </td>
+                    </tr>
+            {%endfor%}
+        
+        </table>
+    {%endif%}
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product login</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body >
+    <div align="center">
+        <form class="form" method="post">
+            <h1>Login</h1>
+            {%csrf_token%}
+            <div class="container">
+            <table>
+                <tr>
+                    <td>Email</td>
+                    <td>:-</td>
+                    <td>{{form.email}}</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>:-</td>
+                    <td>{{form.password}}</td>
+                </tr>
+               
+            </table>
+        </div>
+        <br/>
+          <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+   </div>
+    <p align="right" class="container">go to <a href="/product_register">Register page</a></p>
+
+</body>
+</html>

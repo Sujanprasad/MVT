@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Names</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <br/>
+<div class="container">
+   
+    <form  method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        {%if Button%}
+            <button onclick="alert('data updated successfully!');" class="btn btn-secondary">update</button>
+        {%else%}
+            <input  onclick="alert('Form submitted successfully!');" type="submit" class="btn btn-primary">
+        {%endif%}
+    </form>
+</div>
+    <hr/>
+    {% if data|length == 0 %}
+        <h1>No data to display</h1>
+    {% else %}
+        <h1>Names:</h1>
+        <ol>
+            {% for x in data %}
+                <li id="{{x.id}}">
+                    <input type="checkbox" id="{{x.id}}" onchange="toggleStrike(this)">
+                    {{ x.name }}
+                    <a href="/name/edit/{{ x.id }}"> <button type="button" class="btn btn-secondary">edit</button></a>
+                    <a href="del/{{ x.id }}"> <button type="button" class=" btn btn-danger">delete</button></a>
+                </li>
+                <br/>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+    <script>
+        function toggleStrike(check) {
+            const data = document.getElementById(check.id);
+            if (check.checked) {
+                data.style.textDecoration = 'line-through';
+            } else {
+                data.style.textDecoration = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

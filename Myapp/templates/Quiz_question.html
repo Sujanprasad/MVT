@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <form  method="post">
+        <h1 align="center">Add Questions</h1>
+        {%csrf_token%}
+        <div class="container">
+            <table align="center">
+                <tr>
+                    <td>Question</td>
+                    <td>:-</td>
+                    <td>{{ form.Question }}</td>
+                </tr>
+                <tr>
+                    <td>Answer</td>
+                    <td>:-</td>
+                    <td>{{ form.Answer }}</td>
+                </tr>
+                <tr>
+                    <td>Option-1</td>
+                    <td>:-</td>
+                    <td>{{ form.Option1 }}</td>
+                </tr>
+                <tr>
+                    <td>Option-2</td>
+                    <td>:-</td>
+                    <td>{{ form.Option2 }}</td>
+                </tr>
+                <tr>
+                    <td>Option-3</td>
+                    <td>:-</td>
+                    <td>{{ form.Option3}}</td>
+                </tr>
+                <tr>
+                    <td>Option-4</td>
+                    <td>:-</td>
+                    <td>{{ form.Option4}}</td>
+                </tr>
+                
+            </table>
+        </div>
+        <br/>
+        <p align="center"><button type="submit" class="btn btn-primary">submit</button></p>
+    </form>
+</div>
+<div class="Questions">
+    {% if Questions|length == 0 %}
+        <h1 align="center">NO Questions available</h1>
+    {% else %}
+        <div class="container">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Option-1</th>
+                        <th>Option-2</th>
+                        <th>Option-3</th>
+                        <th>Option-4</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Question in Questions %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{Question.Question}}</td>
+                        <td>{{Question.Answer}}</td>
+                        <td>{{Question.Option1}}</td>
+                        <td>{{Question.Option2}}</td>
+                        <td>{{Question.Option3}}</td>
+                        <td>{{Question.Option4}}</td>
+                        <td><a href="delete_Questions/{{Question.id }}"><button type="button" class="btn btn-danger">delete</button></a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    {%endif%}
+    
+</div>
+<p align="right" class="container">go to<a href="/Student_name"> Quiz page</a></p>
+</body>
+</html>

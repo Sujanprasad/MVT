@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <script>
+           window.onload =function () {
+            var timer = 30;
+            var display = document.querySelector('#timer')
+            var interval = setInterval(function () {
+                var seconds = timer--;
+                display.textContent = seconds;
+
+                if (seconds < 0) {
+                    clearInterval(interval);
+                    display.textContent = "time up!";
+                    alert("Time is up! The quiz will be submitted automatically.");
+                    document.getElementById("quizForm").submit(); // Automatically submit the form
+                }
+            }, 1000);
+        }
+
+      
+    </script>
+</head>
+<body>
+    <h1 align="center">Quiz</h1>
+    <div class="container">
+        <h1 id="timer" align="right">30</h1>
+
+        <form method="post" id="quizForm">
+            {% csrf_token %}
+
+            {% for question in Questions %}
+                <h2>{{ forloop.counter }}. {{ question.Question }} ?</h2>
+                
+                <!-- Hidden input to include question ID -->
+                <input type="hidden" name="question_id{{ forloop.counter }}" value="{{ question.id }}">
+                
+                <ul style="list-style: none;">
+                    <li>
+                        <input type="radio" name="Answer{{ forloop.counter }}" value="Option1">
+                        {{ question.Option1 }}
+                    </li>
+                    <li>
+                        <input type="radio" name="Answer{{ forloop.counter }}" value="Option2">
+                        {{ question.Option2 }}
+                    </li>
+                    <li>
+                        <input type="radio" name="Answer{{ forloop.counter }}" value="Option3">
+                        {{ question.Option3 }}
+                    </li>
+                    <li>
+                        <input type="radio" name="Answer{{ forloop.counter }}" value="Option4">
+                        {{ question.Option4 }}
+                    </li>
+                </ul>
+            {% endfor %}
+
+            <p align="center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </p>
+
+        </form>
+    </div>
+</body>
+</html>

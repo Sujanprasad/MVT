@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Form</title>
+</head>
+<body>
+    <a href="/">HOME</a>
+    <h1>Contact Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+    <p>go to view <a href="/members">members list</a></p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+    <title>Admin Registration</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h2 align="center">Register as Admin</h2>
+    <br>
+    <div  align="center">
+      
+        
+        <form method="post">
+            {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td>Username</td>
+                    <td>:-</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:-</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>:-</td>
+                    <td>{{ form.password1 }}</td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td>:-</td>
+                    <td>{{ form.password2 }}</td>
+                </tr>
+                <tr>
+                    <td>Staff Status</td>
+                    <td>:-</td>
+                    <td>{{ form.is_staff }}</td>
+                </tr>
+                <tr>
+                    <td>Superuser Status</td>
+                    <td>:-</td>
+                    <td>{{ form.is_superuser }}</td>
+                </tr>
+            </table><br>
+            <br>
+            <li>{{form.errors}}</li>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <hr>
+    <p align="right"  class="container">Go to <a href="/login_admin" class="btn btn-primary">Login Page</a></p>
+</body>
+</html>

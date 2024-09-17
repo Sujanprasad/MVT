@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMP NAMES</title>
+    <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+    <style>
+        li a{
+            color: black;
+            text-decoration: none;
+        }
+        li a:hover{
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p><a href="/">HOME</a></p>
+    <h1>Employe names:-</h1>
+    <hr>
+    {%for x in Emp%}
+        <li style="list-style:decimal;"><a  href="emp_details/id={{x.id}}">{{x.firstname}}</a></li>
+    {%endfor%}
+    <hr>
+    <p align="right">Add new <a href="/form">Employee</a></p>
+    <p>Click employe name for details</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first task</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <center>
+    <form action="add_record/" method="post">
+        {% csrf_token %}
+        <h1 align="center">Add Emp</h1>
+        <table>
+            <tr>
+                <td>Firstname</td>
+                <td>:</td>
+                <td><input  name="Firstname" required></td>
+            </tr>
+            <tr>
+                <td>Lastname</td>
+                <td>:</td>
+                <td><input name="Lastname" required></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>:</td>
+                <td><input  name="Phone" required></td>
+            </tr>
+            <tr>
+                <td>Salary</td>
+                <td>:</td>
+                <td><input  name="salary" required></td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>:</td>
+                <td><input  name="position" requiredS></td>
+            </tr>
+        </table>
+        <center><input type="submit" value="submit" class="btn btn-primary"></center>
+    </form>
+   </center>
+   <hr>
+   <p>comeback to <a href="/">Home</a></p>
+   <p align="right">go to <a href="/emp_list">Employee list</a> </p>
+</body>
+</html>

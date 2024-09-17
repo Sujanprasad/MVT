@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registration</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div align="center">
+        {% if messages %} 
+        <ul class="messages"> 
+            {% for message in messages %} 
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li> 
+            {% endfor %} 
+        </ul> 
+        {% endif %}
+
+        <form class="form" method="post">
+            <h1>Register</h1>
+            {% csrf_token %}
+            <div class="container">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td>:-</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:-</td>
+                        <td>{{ form.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>:-</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td>:-</td>
+                        <td>{{ form.password_confirm }}</td>
+                    </tr>
+                    <tr>
+                        <td>Panel</td>
+                        <td>:-</td>
+                        <td>{{ form.panel }}</td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <p align="right" class="container">Go to <a href="/product_login">Login page</a></p>
+    <p align="right" class="container">Go to <a href="/login_product">Login page without panel</a></p>
+
+</body>
+</html>
