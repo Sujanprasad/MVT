@@ -1,9 +1,9 @@
-MVT — Django Sample Project
+# MVT — Django Sample Project
 
 A simple Django project demonstrating the MVT (Model–View–Template) architecture.
 Includes example apps, views, templates, and basic admin usage for learning Django fundamentals.
 
-📁 Project Structure
+# 📁 Project Structure
 MVT/
 ├── Project/       # Django project (settings, urls, wsgi)
 ├── Myapp/         # Example Django app (views, templates, models)
@@ -11,7 +11,7 @@ MVT/
 ├── db.sqlite3     # Example SQLite database
 └── manage.py
 
-🛠 Requirements
+# 🛠 Requirements
 
 Python 3.8+
 
@@ -19,14 +19,14 @@ Django (install using pip install django)
 
 Virtual environment recommended
 
-🚀 How to Run
+# 🚀 How to Run
 # Clone the repository
 git clone https://github.com/Sujanprasad/MVT.git
 cd MVT
 
 # Create virtual environment
 python -m venv .venv
-# Activate it
+ Activate it
 # Windows:
 .venv\Scripts\activate
 # Linux/Mac:
@@ -47,7 +47,7 @@ http://127.0.0.1:8000/
 
 Admin panel: http://127.0.0.1:8000/admin/
 
-📘 Features
+# 📘 Features
 
 Clear example of Django MVT flow
 
@@ -59,7 +59,7 @@ Basic admin setup
 
 SQLite database for quick testing
 
-📄 Useful Commands
+# 📄 Useful Commands
 python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
