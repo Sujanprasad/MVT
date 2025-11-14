@@ -5,10 +5,15 @@ Includes example apps, views, templates, and basic admin usage for learning Djan
 
 # 📁 Project Structure
 MVT/
+
 ├── Project/       # Django project (settings, urls, wsgi)
+
 ├── Myapp/         # Example Django app (views, templates, models)
+
 ├── Admin/         # Admin customization or additional demo app
+
 ├── db.sqlite3     # Example SQLite database
+
 └── manage.py
 
 # 🛠 Requirements
